@@ -10,6 +10,7 @@ var daysEl = document.querySelector('#days');
 var jobsContainerEl= document.querySelector('#jobs-container');
 var jobSearchTerm = document.querySelector('job-search-term');
 var userFormEl = document.querySelector('#user-form');
+var savedJobs = [];
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
@@ -69,10 +70,26 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
         titleEl.textContent = jobName;
     
         jobEl.appendChild(titleEl); 
-        
+
+
+        var saveEl = document.createElement('BUTTON');
+        saveEl.classList = 'flex-row align-center';
+        saveEl.innerText = "Save";
+        saveEl.setAttribute('button', "onclick=()");
+
+        function clearButtons (){
+          document.getElementById('').innerHTML = "";
+         
+          // localStorage.setItem("savedJobs")
+          // savedJobs.push(jobName) }");
+      
+        jobEl.appendChild(saveEl);
+
         jobsContainerEl.appendChild(jobEl);
 
       }
     };
+
+
 
 userFormEl.addEventListener('submit', formSubmitHandler);
