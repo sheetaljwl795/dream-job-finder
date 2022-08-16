@@ -11,6 +11,9 @@ var jobsContainerEl= document.querySelector('#jobs-container');
 var jobSearchTerm = document.querySelector('job-search-term');
 var userFormEl = document.querySelector('#user-form');
 var savedJobs = [];
+// weather api key variables
+var weatherApiRootUrl = 'https://api.openweathermap.org';
+var weatherApiKey = 'd91f911bcf2c0f925fb6535547a5ddc9';
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
@@ -61,6 +64,8 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
     
       for (var i = 0; i < jobcount.length; i++) {
         var jobName = jobcount[i].Company + '/' + jobcount[i].JobTitle + '/' + jobcount[i].Location  +  '/' + jobcount[i].AccquisitionDate ;
+
+        // click event around here for weather api call
     
         var jobEl = document.createElement('a');
         jobEl.classList = 'list-item flex-row justify-space-between align-center';
@@ -77,8 +82,8 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
         saveEl.innerText = "Save";
         saveEl.setAttribute('button', "onclick=()");
 
-        function clearButtons (){
-          document.getElementById('').innerHTML = "";
+      //  function clearButtons (){
+      //     document.getElementById('').innerHTML = "";
          
           // localStorage.setItem("savedJobs")
           // savedJobs.push(jobName) }");
@@ -93,3 +98,25 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
 
 
 userFormEl.addEventListener('submit', formSubmitHandler);
+
+
+// weather api call
+// based off of zip
+function fetchWeather(location) {
+  var { lat } = location;
+  var { lon } = location;
+  var city = location.name;
+  var apiUrl = `${weatherApiRootUrl}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${weatherApiKey}`;
+
+  fetch(apiUrl)
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      renderItems(city, data);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+}
+// init() function
