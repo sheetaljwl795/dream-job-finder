@@ -77,8 +77,8 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
         saveEl.innerText = "Save";
         saveEl.setAttribute('button', "onclick=()");
 
-        function clearButtons (){
-          document.getElementById('').innerHTML = "";
+        //function clearButtons (){
+         // document.getElementById('').innerHTML = "";
          
           // localStorage.setItem("savedJobs")
           // savedJobs.push(jobName) }");
