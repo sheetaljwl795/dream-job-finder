@@ -10,7 +10,7 @@ var daysEl = document.querySelector('#days');
 var jobsContainerEl= document.querySelector('#jobs-container');
 var jobSearchTerm = document.querySelector('job-search-term');
 var userFormEl = document.querySelector('#user-form');
-var savedJobs = [];
+
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
@@ -60,36 +60,57 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
       // jobSearchTerm.textContent = jobsearchKeyword;
     
       for (var i = 0; i < jobcount.length; i++) {
-        var jobName = jobcount[i].Company + '/' + jobcount[i].JobTitle + '/' + jobcount[i].Location  +  '/' + jobcount[i].AccquisitionDate ;
+        var jobName ="Company Name: " + jobcount[i].Company + '; Job Title: ' + jobcount[i].JobTitle + '; Location: ' + jobcount[i].Location  +  '; Posted on: ' + jobcount[i].AccquisitionDate;
     
         var jobEl = document.createElement('a');
         jobEl.classList = 'list-item flex-row justify-space-between align-center';
-        jobEl.setAttribute('href', jobcount[i].URL);
-    
+        jobEl.setAttribute('href', jobcount[i].URL,);
+        jobEl.setAttribute('target', '_blank');
+           
         var titleEl = document.createElement('span');
         titleEl.textContent = jobName;
     
         jobEl.appendChild(titleEl); 
 
-
         var saveEl = document.createElement('BUTTON');
         saveEl.classList = 'flex-row align-center';
         saveEl.innerText = "Save";
-        saveEl.setAttribute('button', "onclick=()");
+           
 
-        //function clearButtons (){
-         // document.getElementById('').innerHTML = "";
-         
-          // localStorage.setItem("savedJobs")
-          // savedJobs.push(jobName) }");
-      
         jobEl.appendChild(saveEl);
-
         jobsContainerEl.appendChild(jobEl);
 
-      }
+        saveEl.addEventListener("click", function() {
+          if (saveEl.addEventListener ==true) {saveJob(this.jobName)}
+        }
+        ); 
+      } 
+      
+      
     };
 
+   var savedJobs = [
+        // { companyName: jobcount[i].Company,
+        //   jobTitle: jobcount[i].JobTitle,
+        //   jobURL: jobcount[i].URL
+        //  } 
+      ]
+
+   var saveJob = function(test) {
+      savedJobs.push(test);
+      localStorage.setItem('jobs', JSON.stringify(savedJobs));     
+    };
+    
+
+  // var initSavedJobs = function () {
+  //     var storedJobsList = localStorage.getItem('savedjobs');
+  //     if (storedJobsList) {
+  //       savedJobs = JSON.parse(storedJobsList);
+  //     }
+  //     renderstoredJobsList();
+  //   }
 
 
 userFormEl.addEventListener('submit', formSubmitHandler);
+
+  
