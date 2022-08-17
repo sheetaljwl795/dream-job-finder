@@ -11,6 +11,7 @@ var jobsContainerEl= document.querySelector('#jobs-container');
 var jobSearchTerm = document.querySelector('job-search-term');
 var userFormEl = document.querySelector('#user-form');
 var savedJobs = [];
+var savedListEl = document.querySelector('#savedList')
 
 
 var formSubmitHandler = function(event) {
@@ -86,11 +87,22 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
         
 
         saveEl.addEventListener("click", function(event) {
+
           console.log("saved job button clicked")
           console.log(event.target.parentNode)
-          console.log(event.target.parentNode.)
-            savedJobs.push(jobName);
+          console.log(event.target.parentNode.innerText)
+
+            savedJobs.push(event.target.parentNode.innerText);
             localStorage.setItem('jobs', JSON.stringify(savedJobs)); 
+
+            var sListEl = document.createElement("ul");
+
+            console.log(localStorage.getItem("jobs"));
+
+            sListEl.textContent = localStorage.getItem("jobs");
+            console.log(sListEl.textContent);
+
+            savedListEl.appendChild(sListEl);
         }
         ); 
       }  
