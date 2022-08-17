@@ -10,6 +10,7 @@ var daysEl = document.querySelector('#days');
 var jobsContainerEl= document.querySelector('#jobs-container');
 var jobSearchTerm = document.querySelector('job-search-term');
 var userFormEl = document.querySelector('#user-form');
+var savedJobs = [];
 
 
 var formSubmitHandler = function(event) {
@@ -82,26 +83,27 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
 
         jobEl.appendChild(saveEl);
         jobsContainerEl.appendChild(jobEl);
+        
 
-        saveEl.addEventListener("click", function() {
-          if (saveEl.addEventListener == true) {saveJob(this.jobName)}
+        saveEl.addEventListener("click", function(event) {
+          console.log("saved job button clicked")
+          console.log(event.target.parentNode)
+          console.log(event.target.parentNode.)
+            savedJobs.push(jobName);
+            localStorage.setItem('jobs', JSON.stringify(savedJobs)); 
         }
         ); 
-      }     
-      
+      }  
+
     };
 
-   var savedJobs = [
-        // { companyName: jobcount[i].Company,
-        //   jobTitle: jobcount[i].JobTitle,
-        //   jobURL: jobcount[i].URL
-        //  } 
-      ]
+  
 
-   var saveJob = function(test) {
-      savedJobs.push(test);
-      localStorage.setItem('jobs', JSON.stringify(savedJobs));     
-    };
+
+  //  var saveJob = function(test) {
+  //     savedJobs.push(test);
+  //     localStorage.setItem('jobs', JSON.stringify(savedJobs));     
+  //   };
     
 
   // var initSavedJobs = function () {
