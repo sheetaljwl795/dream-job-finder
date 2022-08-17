@@ -87,8 +87,7 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
           if (saveEl.addEventListener == true) {saveJob(this.jobName)}
         }
         ); 
-      } 
-      
+      }     
       
     };
 
