@@ -71,7 +71,7 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
         jobEl.textContent = jobName
 
         var urlEl = document.createElement('a');
-        urlEl.textContent = "Click here for more details -->"
+        urlEl.textContent = "Click here for job listing"
         urlEl.setAttribute('href', jobcount[i].URL,);
         urlEl.setAttribute('target', '_blank');
    
