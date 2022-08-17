@@ -1,38 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dream Job Finder</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"> -->
     <link rel="stylesheet" href="style.css">
+    <title>Dream Job Finder</title>    
 </head>
-<body>
-    <header>
 
-    </header>
+<body class="flex-column min-100-vh">
+  <header class="hero">
+    <h1 class="app-title"><i class="fab fa-search"></i> Dream Job Search!</h1>
+    <p>Great webpage to find your dream job by searching with your skills and location !
+    </p>
+  </header>
 
-    <!--Search Section-->
-    <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
-        <div class="col-12 col-md-3 bg-light p-3">
-          <h1 class="text-primary">Dream Job Searcher</h1>
-          <form id="search-form" class="mb-2">
-            <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
-            <select id="format-input" class="form-input w-100">
-              <option value="" disabled selected>Select a format...</option>
-              <option value="maps">Maps</option>
-              <option value="audio">Audio</option>
-              <option value="photos">Photos</option>
-              <option value="manuscripts">Manuscripts</option>
-              <option value="newspapers">Newspapers</option>
-              <option value="film-and-videos">Film and Videos</option>
-              <option value="notated-music">Notated Music</option>
-              <option value="websites">Websites</option>
-            </select>
-            <button class="btn btn-info btn-block">Search</button>
-          </form>
+  <main class="flex-row justify-space-between">
+    <div class="col-12 col-md-3">
+
+      <div class="card">
+        <h3 class="card-header text-uppercase">Search Job</h3>
+        <form id="user-form" class="card-body">
+
+          <label class="form-label" for="keyword">Keyword</label>
+          <input name="keyword" id="keyword" value placeholder="(required ex: developer)" type="text" autofocus="true" class="form-input"/>
+
+          <label class="form-label" for="location">Location Zip Code</label>
+          <input name="location" id="location" value placeholder="(required ex: 20191)" type="text" autofocus="true" class="form-input"/>
+
+          <label class="form-label" for="radius">Radius</label>
+          <input name="radius" id="radius" value placeholder="25" type="text" autofocus="true" class="form-input"/>
+
+          <label class="form-label" for="days">Days</label>
+          <input name="days" id="days"  value placeholder="(required ex: 30)" type="text" autofocus="true" class="form-input"/>
+
+          <!-- <label class="form-label" for="sortColumns">Sort Columns</label>
+          <input name="sortColumns" id="sortColumns" type="text" autofocus="true" class="form-input"/>
+
+          <label class="form-label" for="sortOrder">Sort Order</label>
+          <input name="sortOrder" id="sortOrder" type="text" autofocus="true" class="form-input"/>
+
+          <label class="form-label" for="startRecord">Start Record</label>
+          <input name="startRecord" id="startRecord" type="text" autofocus="true" class="form-input"/>
+
+          <label class="form-label" for="pageSize">Page Size</label>
+          <input name="pageSize" id="pageSize" type="text" autofocus="true" class="form-input"/> -->
+
+          <button type="submit" class="btn">Get Jobs</button>
+
+        </form>
+      </div>
+
+    </div>
+
+    <div class="col-12 col-md-6">
+      <h2 class="subtitle">Showing Jobs For: <span id="job-search-term"></span></h2>
+      <div id="jobs-container" class="list-group"></div>
+    
+    </div>
+  
+    <div class="col-12 col-md-3">
+
+      <div class="card">
+        <h3 class="card-header text-uppercase">Saved Jobs:</h3>
+        <div id="language-buttons" class="card-body">
+          <p>Job 1</p>
+          <p>Job 2</p>
+          <p>Job 3</p>
+          <p>Job 4</p>
+          <p>Job 5</p>
+          <p>Job 6</p>
+          <p>Job 7</p>
         </div>
-    </div>  
+      </div>
+
+      <div class="card">
+        <h3 class="card-header text-uppercase">Weather:</h3>
+        <div id="language-buttons" class="card-body">
+          <p>Sunny</p>
+          <p>Raining</p>
+          <p>Snowing</p>
+
+        </div>
+      </div>
+
+    </div>
+
+  
+  
+  </main>
+
 
 
     <script src="script.js"></script>
