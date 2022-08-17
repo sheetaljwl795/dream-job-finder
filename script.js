@@ -62,26 +62,29 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
       for (var i = 0; i < jobcount.length; i++) {
         var jobName ="Company Name: " + jobcount[i].Company + '; Job Title: ' + jobcount[i].JobTitle + '; Location: ' + jobcount[i].Location  +  '; Posted on: ' + jobcount[i].AccquisitionDate;
     
-        var jobEl = document.createElement('a');
+        
+
+        var jobEl = document.createElement('p');
         jobEl.classList = 'list-item flex-row justify-space-between align-center';
-        jobEl.setAttribute('href', jobcount[i].URL,);
-        jobEl.setAttribute('target', '_blank');
-           
-        var titleEl = document.createElement('span');
-        titleEl.textContent = jobName;
+        jobEl.textContent = jobName
+
+        var urlEl = document.createElement('a');
+        urlEl.textContent = "Click here for more details -->"
+        urlEl.setAttribute('href', jobcount[i].URL,);
+        urlEl.setAttribute('target', '_blank');
+   
     
-        jobEl.appendChild(titleEl); 
+        jobEl.appendChild(urlEl); 
 
         var saveEl = document.createElement('BUTTON');
         saveEl.classList = 'flex-row align-center';
-        saveEl.innerText = "Save";
-           
+        saveEl.innerText = "Save Job";        
 
         jobEl.appendChild(saveEl);
         jobsContainerEl.appendChild(jobEl);
 
         saveEl.addEventListener("click", function() {
-          if (saveEl.addEventListener ==true) {saveJob(this.jobName)}
+          if (saveEl.addEventListener == true) {saveJob(this.jobName)}
         }
         ); 
       } 
