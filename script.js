@@ -12,8 +12,10 @@ var jobSearchTerm = document.querySelector('job-search-term');
 var userFormEl = document.querySelector('#user-form');
 var savedJobs = [];
 // weather api key variables
-var weatherApiRootUrl = 'https://api.openweathermap.org';
-var weatherApiKey = 'd91f911bcf2c0f925fb6535547a5ddc9';
+var weatherZip = document.querySelector('#zip');
+var apiKey = "d91f911bcf2c0f925fb6535547a5ddc9"
+var weatherApiUrl = "https://api.openweathermap.org";
+
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
@@ -99,21 +101,31 @@ userFormEl.addEventListener('submit', formSubmitHandler);
 
 // weather api call
 // based off of zip
-function fetchWeather(location) {
-  var { lat } = location;
-  var { lon } = location;
-  var city = location.name;
-  var apiUrl = `${weatherApiRootUrl}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${weatherApiKey}`;
+var getWeather = function fetchWeather(location) {
+    var { lat } = location;
+    var { lon } = location;
+    var cityName = location.name;
+    var apiUrl = `${weatherApiUrl}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${apiKey}`;
 
-  fetch(apiUrl)
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (data) {
-      renderItems(city, data);
-    })
-    .catch(function (err) {
-      console.error(err);
-    });
+  fetch(weatherApiUrl, {
+      headers: {Authorization: "d91f911bcf2c0f925fb6535547a5ddc9"}})
+
+  .then(function (response) {
+      if (response.ok) {
+      console.log(response);
+      response.json().then(function (data) {
+              console.log(data);    
+              console.log(data.Jobs);
+              console.log(weatherZip.value.trim());
+              displayWeather(data.Jobs, weatherZip.value.trim());
+      });
+      } else {
+      alert('Error: ' + response.statusText);
+      }
+  })
 }
+  //display jobs function
+
+  var displayWeather = d
+  
 // init() function
