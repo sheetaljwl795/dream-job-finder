@@ -80,7 +80,8 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
 
         var saveEl = document.createElement('BUTTON');
         saveEl.classList = 'flex-row align-center';
-        saveEl.innerText = "Save Job";        
+        saveEl.innerText = "Save Job";
+        saveEl.value = i       
 
         jobEl.appendChild(saveEl);
         jobsContainerEl.appendChild(jobEl);
