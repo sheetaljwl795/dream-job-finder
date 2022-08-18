@@ -96,11 +96,20 @@ margin: 10px;
   width: 200px;
 }
 
-.flex-child {
+.float-jobs {
   width: 400px;
   border: 2px solid black;
   justify-content: center;
   background-color: rgb(106, 233, 216);
+  flex-direction: column;
+}                                                                                                                                                                                    
+
+.float-child {
+  width: 400px;
+  border: 2px solid black;                                                                                 
+  justify-content: center;
+  background-color: rgb(106, 233, 216);
+  flex-direction: column;
 }
 
 html {
