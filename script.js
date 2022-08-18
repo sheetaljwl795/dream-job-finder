@@ -87,21 +87,18 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
         
 
         saveEl.addEventListener("click", function(event) {
-
-          console.log("saved job button clicked")
-          console.log(event.target.parentNode)
+          
           console.log(event.target.parentNode.innerText)
 
             savedJobs.push(event.target.parentNode.innerText);
             localStorage.setItem('jobs', JSON.stringify(savedJobs)); 
 
-            var sListEl = document.createElement("ul");
+            var sListEl = document.createElement("li");
+            sListEl.setAttribute("id","likedjob");
 
-            console.log(localStorage.getItem("jobs"));
-
-            sListEl.textContent = localStorage.getItem("jobs");
-            console.log(sListEl.textContent);
-
+            
+            var last = savedJobs[savedJobs.length - 1];
+            sListEl.textContent = last;
             savedListEl.appendChild(sListEl);
         }
         ); 
