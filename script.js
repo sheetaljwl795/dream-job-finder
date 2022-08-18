@@ -71,7 +71,7 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
         jobEl.textContent = jobName
 
         var urlEl = document.createElement('a');
-        urlEl.textContent = "Click here for job listing"
+        urlEl.textContent = "Click here for more details -->"
         urlEl.setAttribute('href', jobcount[i].URL,);
         urlEl.setAttribute('target', '_blank');
    
@@ -80,29 +80,25 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
 
         var saveEl = document.createElement('BUTTON');
         saveEl.classList = 'flex-row align-center';
-        saveEl.innerText = "Save Job";
-        saveEl.value = i       
+        saveEl.innerText = "Save Job";        
 
         jobEl.appendChild(saveEl);
         jobsContainerEl.appendChild(jobEl);
         
 
         saveEl.addEventListener("click", function(event) {
-
-          console.log("saved job button clicked")
-          console.log(event.target.parentNode)
+          
           console.log(event.target.parentNode.innerText)
 
             savedJobs.push(event.target.parentNode.innerText);
             localStorage.setItem('jobs', JSON.stringify(savedJobs)); 
 
-            var sListEl = document.createElement("ul");
+            var sListEl = document.createElement("li");
+            sListEl.setAttribute("id","likedjob");
 
-            console.log(localStorage.getItem("jobs"));
-
-            sListEl.textContent = localStorage.getItem("jobs");
-            console.log(sListEl.textContent);
-
+            
+            var last = savedJobs[savedJobs.length - 1];
+            sListEl.textContent = last;
             savedListEl.appendChild(sListEl);
         }
         ); 

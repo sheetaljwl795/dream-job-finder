@@ -11,7 +11,7 @@
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-      <link rel="stylesheet" href="style.css"/>    
+      <link rel="stylesheet" href="style.css">    
 </head>
 
 <body class="flex-column min-100-vh">
@@ -40,48 +40,50 @@
 
 
   <main class="flex-row justify-space-between">
-    <div class="col-12 col-md-3">
+    
 
-      <div class="container">
-        <h3 class="card-header text-uppercase">Search Jobs</h3>
-        <form id="user-form" class="card-body">
+    <div class="container">
+      <h3 class="card-header text-uppercase">Search Jobs</h3>
+      
+      <form id="user-form" class="card-body">
+        
+        <label class="form-label" for="keyword">Keyword</label>
+        <input name="keyword" id="keyword" value placeholder="(required ex: developer)" type="text" autofocus="true" class="form-input"/>
+        
+        <label class="form-label" for="location">City or Zip Code</label>
+        <input name="location" id="location" value placeholder="(required ex: 20191)" type="text" autofocus="true" class="form-input"/>
 
-          <label class="form-label" for="keyword">Keyword</label>
-          <input name="keyword" id="keyword" value placeholder="(required ex: developer)" type="text" autofocus="true" class="form-input"/>
+        <label class="form-label" for="radius">Radius</label>
+        <input name="radius" id="radius" value placeholder="25" type="text" autofocus="true" class="form-input"/>
 
-          <label class="form-label" for="location">City or Zip Code</label>
-          <input name="location" id="location" value placeholder="(required ex: 20191)" type="text" autofocus="true" class="form-input"/>
+        <label class="form-label" for="days">Date Posted</label>
+        <input name="days" id="days"  value placeholder="(required ex: 30)" type="text" autofocus="true" class="form-input"/>
 
-          <label class="form-label" for="radius">Radius</label>
-          <input name="radius" id="radius" value placeholder="25" type="text" autofocus="true" class="form-input"/>
+        <button type="submit" class="btn">Get Jobs</button>
 
-          <label class="form-label" for="days">Date Posted</label>
-          <input name="days" id="days"  value placeholder="(required ex: 30)" type="text" autofocus="true" class="form-input"/>
+      </form>
 
+    
 
-          <button type="submit" class="btn">Get Jobs</button>
-
-        </form>
+      <div class='float-jobs'>
+          
+          <div class="flex-child">
+            <h2>Showing Jobs For: <span id="job-search-term"></span></h2>
+            <div id="jobs-container"></div>
+      
+          </div>
+    
+          <div class="flex-child">
+            <h2>Saved Jobs</h2>                      
+            <div id="savedList"></div>
+          
+          </div>
+      
       </div>
 
     </div>
-
-      <div class="float-jobs">
-
-
-       <div class="float-child">
-          <h2 class="subtitle">Showing Jobs For: <span id="job-search-term"></span></h2>
-          <div id="jobs-container" class="list-group"></div>
       
-        </div>
-    
-        <div class="float-child">
-          <h3 class="card-header text-uppercase">Saved Jobs:</h3>                      
-          <div id="savedList" class="card-body"></div>
-        </div>
-      </div>
-
-
+    <div class="pagenumbers" id ="pagination"></div>
 
 
 
