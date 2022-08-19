@@ -108,7 +108,8 @@ userFormEl.addEventListener('submit', formSubmitHandler);
 // }
 
 function fetchWeather(location) {
-  var zipCode = locationEl.value
+  var zipCode = locationEl.value.trim();
+  console.log(zipCode);
   var apiUrl = `${weatherApiUrl}/data/2.5/forecast?zip=${zipCode},us&appid=${apiKey}`;
 
   fetch(apiUrl)
@@ -117,12 +118,12 @@ function fetchWeather(location) {
       if (response.ok) {
         console.log(response);
         response.json()
-        .then(function (data) {
-          console.log(data);
-          console.log(data.city);
-          console.log(weatherZip.value.trim());
-          // renderItems(data.city, weatherZip.value.trim());
-        });
+          .then(function (data) {
+            console.log(data);
+            console.log(data.list.city);
+           // console.log(locationEl.value.trim());
+            // renderItems(data.city, weatherZip.value.trim());
+          });
       } else {
         alert('Error: ' + response.statusText);
       }
@@ -130,10 +131,10 @@ function fetchWeather(location) {
 }
 
 // weather submit button
-var weatherSubmitBtn = function (event) {
-  event.preventDefault();
-}
-weatherSubmit.addEventListener('click', weatherSubmitBtn);
+// var weatherSubmitBtn = function (event) {
+//   event.preventDefault();
+// }
+// weatherSubmit.addEventListener('click', weatherSubmitBtn);
 
 //display jobs function
 
