@@ -28,18 +28,14 @@ var formSubmitHandler = function(event) {
 
 var getJobs = function(val1, val2, val3, val4) {
     var apiUrl = 'https://api.careeronestop.org/v1/jobsearch/cgdmCgyPmLm9gZv/' + val1 + '/' + val2 + '/' + val3 + '/0/0/0/25/' + val4 + '?source=NLx&showFilters=false';
-    console.log(apiUrl);
     
     fetch(apiUrl, {
         headers: {Authorization: "Bearer fp63rEjnLUMlR+EolzxiYFhWBRxeLUH6GeNtjPUeRBxtpmZl0E76E9iGBGGVeVOpYbTh/U2kf1ao8pD4+0XStA=="}})
 
     .then(function (response) {
         if (response.ok) {
-        console.log(response);
+   
         response.json().then(function (data) {
-                console.log(data);    
-                console.log(data.Jobs);
-                console.log(keywordEl.value.trim());
                 displayJobs(data.Jobs, keywordEl.value.trim());
         });
         } else {
@@ -57,10 +53,8 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
     if (jobcount.length === 0) {
         jobsContainerEl.textContent = 'No jobs found.';
         return;
-      }
-    
-      // jobSearchTerm.textContent = jobsearchKeyword;
-    
+      }    
+  
       for (var i = 0; i < jobcount.length; i++) {
         var jobName ="Company Name: " + jobcount[i].Company + '; Job Title: ' + jobcount[i].JobTitle + '; Location: ' + jobcount[i].Location  +  '; Posted on: ' + jobcount[i].AccquisitionDate;
     
@@ -88,9 +82,26 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
 
         saveEl.addEventListener("click", function(event) {
           
-          console.log(event.target.parentNode.innerText)
+          console.log(event);
+          console.log(event.target.parentElement.childNodes)
+          // console.log(event.target.parentElement.childNodes.NodeList.children)
+          // console.log(event.target.parentElement.childNodes(0).data)
+          // console.log(event.target.parentElement.childNodes(0).textContent)
+          // console.log(event.target.parentElement.childNodes(0).nodeValue)
+        
 
-            savedJobs.push(event.target.parentNode.innerText);
+
+           var sList = event.target.parentNode.innerText;
+           //var temp = text.split(sList "Company Name:”)
+
+           console.log(sList)
+           var temp = sList.split("Company Name:")
+           console.log(temp)
+           
+
+           savedJobs.push(event.target.parentNode.innerText);
+            
+
             localStorage.setItem('jobs', JSON.stringify(savedJobs)); 
 
             var sListEl = document.createElement("li");
@@ -98,6 +109,9 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
 
             
             var last = savedJobs[savedJobs.length - 1];
+            // var last = localStorage.getItem(jobs.length -1);
+            console.log(last);
+
             sListEl.textContent = last;
             savedListEl.appendChild(sListEl);
         }
@@ -105,24 +119,6 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
       }  
 
     };
-
-  
-
-
-  //  var saveJob = function(test) {
-  //     savedJobs.push(test);
-  //     localStorage.setItem('jobs', JSON.stringify(savedJobs));     
-  //   };
-    
-
-  // var initSavedJobs = function () {
-  //     var storedJobsList = localStorage.getItem('savedjobs');
-  //     if (storedJobsList) {
-  //       savedJobs = JSON.parse(storedJobsList);
-  //     }
-  //     renderstoredJobsList();
-  //   }
-
 
 userFormEl.addEventListener('submit', formSubmitHandler);
 

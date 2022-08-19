@@ -24,29 +24,22 @@
         <h3 class="card-header text-uppercase">Search Job</h3>
         <form id="user-form" class="card-body">
 
-          <label class="form-label" for="keyword">Keyword</label>
+          <label class="form-label" for="keyword">Job Keyword</label>
           <input name="keyword" id="keyword" value placeholder="(required ex: developer)" type="text" autofocus="true" class="form-input"/>
 
-          <label class="form-label" for="location">Location Zip Code</label>
-          <input name="location" id="location" value placeholder="(required ex: 20191)" type="text" autofocus="true" class="form-input"/>
+          <label class="form-label" for="location">Location</label>
+          <input name="location" id="location" value placeholder="(required ex: zipcode or city, state(reston, va))" type="text" autofocus="true" class="form-input"/>
 
-          <label class="form-label" for="radius">Radius</label>
-          <input name="radius" id="radius" value placeholder="25" type="text" autofocus="true" class="form-input"/>
+          <label class="form-label" for="radius">Search Radius (miles)</label>
+          <input name="radius" id="radius" value placeholder="(required: ex: 25)" type="text" autofocus="true" class="form-input"/>
 
-          <label class="form-label" for="days">Days</label>
+          <label class="form-label" for="days">Days Posted</label>
           <input name="days" id="days"  value placeholder="(required ex: 30)" type="text" autofocus="true" class="form-input"/>
 
-          <!-- <label class="form-label" for="sortColumns">Sort Columns</label>
-          <input name="sortColumns" id="sortColumns" type="text" autofocus="true" class="form-input"/>
-
-          <label class="form-label" for="sortOrder">Sort Order</label>
-          <input name="sortOrder" id="sortOrder" type="text" autofocus="true" class="form-input"/>
-
-          <label class="form-label" for="startRecord">Start Record</label>
-          <input name="startRecord" id="startRecord" type="text" autofocus="true" class="form-input"/>
-
+          <!-- 
           <label class="form-label" for="pageSize">Page Size</label>
-          <input name="pageSize" id="pageSize" type="text" autofocus="true" class="form-input"/> -->
+          <input name="pageSize" id="pageSize" type="text" autofocus="true" class="form-input"/> 
+          -->
 
           <button type="submit" class="btn">Get Jobs</button>
 
