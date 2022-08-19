@@ -15,7 +15,8 @@ var savedJobs = [];
 var weatherZip = document.querySelector('#zip');
 var apiKey = "d91f911bcf2c0f925fb6535547a5ddc9"
 var weatherApiUrl = "https://api.openweathermap.org";
-var weatherSubmit = document.querySelector(".weather-form")
+var weatherDiv = document.querySelector("#localWeather");
+
 
 var formSubmitHandler = function (event) {
   event.preventDefault();
@@ -103,9 +104,6 @@ userFormEl.addEventListener('submit', formSubmitHandler);
 
 // weather api call
 // based off of zip
-//function renderItems(city, data) {
-//   renderCurrentWeather(city, data.current, data.timezone);
-// }
 
 function fetchWeather(location) {
   var zipCode = locationEl.value.trim();
@@ -120,9 +118,9 @@ function fetchWeather(location) {
         response.json()
           .then(function (data) {
             console.log(data);
-            console.log(data.list.city);
-           // console.log(locationEl.value.trim());
-            // renderItems(data.city, weatherZip.value.trim());
+            console.log(data.list[0].weather[0].description)
+            console.log(weatherDiv)
+            weatherDiv.innerHTML = data.list[0].weather[0].description
           });
       } else {
         alert('Error: ' + response.statusText);
@@ -130,14 +128,10 @@ function fetchWeather(location) {
     })
 }
 
-// weather submit button
-// var weatherSubmitBtn = function (event) {
-//   event.preventDefault();
+
+// function displayLocalWeather () {
+//     weatherDiv.innerHTML()
 // }
-// weatherSubmit.addEventListener('click', weatherSubmitBtn);
-
-//display jobs function
-
-//var displayWeather = d
-
-// init() function
+            //console.log(data.list[0].main.temp)
+           // console.log(locationEl.value.trim());
+            // renderItems(data.city, weatherZip.value.trim());
