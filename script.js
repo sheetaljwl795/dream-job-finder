@@ -180,4 +180,3 @@ function fetchWeather(location) {
             //console.log(data.list[0].main.temp)
            // console.log(locationEl.value.trim());
             // renderItems(data.city, weatherZip.value.trim());
-
