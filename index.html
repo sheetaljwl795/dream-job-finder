@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    
-  
-  
+
+
+
   <link rel="stylesheet" href="style.css">
-    <title>Dream Job Finder</title>    
+  <title>Dream Job Finder</title>
 </head>
 
 <body class="flex-column min-100-vh">
@@ -22,7 +23,10 @@
     </p>
   </header>
 
-  <div id="ww_f2ea0b0c0ebcd" v='1.20' loc='auto' a='{"t":"responsive","lang":"en","ids":[],"cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"5","sl_sot":"fahrenheit","sl_ics":"one_a","font":"Arial"}'><a href="https://weatherwidget.org/" id="ww_f2ea0b0c0ebcd_u" target="_blank">Weather Forecast Widgets for Websites</a> by Weatherwidget.org</div>
+  <div id="ww_f2ea0b0c0ebcd" v='1.20' loc='auto'
+    a='{"t":"responsive","lang":"en","ids":[],"cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"5","sl_sot":"fahrenheit","sl_ics":"one_a","font":"Arial"}'>
+    <a href="https://weatherwidget.org/" id="ww_f2ea0b0c0ebcd_u" target="_blank">Weather Forecast Widgets for
+      Websites</a> by Weatherwidget.org</div>
   <script async src="https://srv1.weatherwidget.org/js/?id=ww_f2ea0b0c0ebcd"></script>
 
   <main class="flex-row justify-space-between">
@@ -33,16 +37,19 @@
         <form id="user-form" class="card-body">
 
           <label class="form-label" for="keyword">Job Title</label>
-          <input name="keyword" id="keyword" value placeholder="(required ex: developer)" type="text" autofocus="true" class="form-input"/>
+          <input name="keyword" id="keyword" value placeholder="(required ex: developer)" type="text" autofocus="true"
+            class="form-input" />
 
           <label class="form-label" for="location">Location City or Zip Code</label>
-          <input name="location" id="location" value placeholder="(required ex: 20191)" type="text" autofocus="true" class="form-input"/>
+          <input name="location" id="location" value placeholder="(required ex: 20191)" type="text" autofocus="true"
+            class="form-input" />
 
           <label class="form-label" for="radius">Mile Radius</label>
-          <input name="radius" id="radius" value placeholder="25" type="text" autofocus="true" class="form-input"/>
+          <input name="radius" id="radius" value placeholder="25" type="text" autofocus="true" class="form-input" />
 
           <label class="form-label" for="days">Days Since Posting</label>
-          <input name="days" id="days"  value placeholder="(required ex: 30)" type="text" autofocus="true" class="form-input"/>
+          <input name="days" id="days" value placeholder="(required ex: 30)" type="text" autofocus="true"
+            class="form-input" />
 
 
           <button type="submit" class="btn">Get Jobs</button>
@@ -55,15 +62,15 @@
     <div class="col-12 col-md-6">
       <h2 class="subtitle">Jobs based on your search:<span id="job-search-term"></span></h2>
       <div id="jobs-container" class="list-group"></div>
-    
+
     </div>
-  
+
     <div class="col-12 col-md-3">
 
       <div class="card">
         <h3 class="card-header text-uppercase">Saved Jobs:</h3>
         <div id="savedList" class="card-body">
-          
+
         </div>
       </div>
 
@@ -76,17 +83,18 @@
 
         </div>
       </div>
-     
-      <div class="pagenumbers" id ="pagination"></div>
+
+      <div class="pagenumbers" id="pagination"></div>
 
     </div>
 
-  
-  
+
+
   </main>
 
 
   <footer>&Copy 2022 Team Project E, UW Coding Boot Camp August, 2022</footer>
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
