@@ -13,14 +13,16 @@ var userFormEl = document.querySelector('#user-form');
 var savedJobs = [];
 var savedListEl = document.querySelector('#savedList')
 
-
+// Captures Form Inputs
 var formSubmitHandler = function(event) {
     event.preventDefault();
-
+  // varibles to define form values
     var keyword = keywordEl.value.trim();
     var location = locationEl.value.trim();
     var radius = radiusEl.value.trim();
     var days = daysEl.value.trim();
+
+  // function to get and display jobs by passing above variables
 
     getJobs(keyword,location,radius,days);
 };
@@ -28,13 +30,13 @@ var formSubmitHandler = function(event) {
 
 var getJobs = function(val1, val2, val3, val4) {
     var apiUrl = 'https://api.careeronestop.org/v1/jobsearch/cgdmCgyPmLm9gZv/' + val1 + '/' + val2 + '/' + val3 + '/0/0/0/25/' + val4 + '?source=NLx&showFilters=false';
-    
+    //Fetching Bearer token
     fetch(apiUrl, {
         headers: {Authorization: "Bearer fp63rEjnLUMlR+EolzxiYFhWBRxeLUH6GeNtjPUeRBxtpmZl0E76E9iGBGGVeVOpYbTh/U2kf1ao8pD4+0XStA=="}})
 
     .then(function (response) {
         if (response.ok) {
-   
+   // Getting 
         response.json().then(function (data) {
                 displayJobs(data.Jobs, keywordEl.value.trim());
         });
@@ -48,7 +50,7 @@ var getJobs = function(val1, val2, val3, val4) {
     });
 
 }
-
+// Display jobs  is to show the results 
 var displayJobs = function(jobcount, jobsearchKeyword) {
     if (jobcount.length === 0) {
         jobsContainerEl.textContent = 'No jobs found.';
@@ -59,11 +61,10 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
         var jobName ="Company Name: " + jobcount[i].Company + '; Job Title: ' + jobcount[i].JobTitle + '; Location: ' + jobcount[i].Location  +  '; Posted on: ' + jobcount[i].AccquisitionDate;
     
         
-
         var jobEl = document.createElement('p');
         jobEl.classList = 'list-item flex-row justify-space-between align-center';
         jobEl.textContent = jobName
-
+        //Adding jobs url link Click here for more details -->
         var urlEl = document.createElement('a');
         urlEl.textContent = "Click here for more details -->"
         urlEl.setAttribute('href', jobcount[i].URL,);
@@ -71,7 +72,7 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
    
     
         jobEl.appendChild(urlEl); 
-
+        // Making a list of intrested job for followup
         var saveEl = document.createElement('BUTTON');
         saveEl.classList = 'flex-row align-center';
         saveEl.innerText = "Save Job";        
@@ -79,39 +80,18 @@ var displayJobs = function(jobcount, jobsearchKeyword) {
         jobEl.appendChild(saveEl);
         jobsContainerEl.appendChild(jobEl);
         
+       // using the local stoage for saved job
+        saveEl.addEventListener("click", function(event) {          
 
-        saveEl.addEventListener("click", function(event) {
-          
-          console.log(event);
-          console.log(event.target.parentElement.childNodes)
-          // console.log(event.target.parentElement.childNodes.NodeList.children)
-          // console.log(event.target.parentElement.childNodes(0).data)
-          // console.log(event.target.parentElement.childNodes(0).textContent)
-          // console.log(event.target.parentElement.childNodes(0).nodeValue)
-        
-
-
-           var sList = event.target.parentNode.innerText;
-           //var temp = text.split(sList "Company Name:”)
-
-           console.log(sList)
-           var temp = sList.split("Company Name:")
-           console.log(temp)
-           
-
-           savedJobs.push(event.target.parentNode.innerText);
-            
-
-            localStorage.setItem('jobs', JSON.stringify(savedJobs)); 
+           savedJobs.push(event.target.parentNode.innerText);        
+           localStorage.setItem('jobs', JSON.stringify(savedJobs)); 
 
             var sListEl = document.createElement("li");
             sListEl.setAttribute("id","likedjob");
-
-            
-            var last = savedJobs[savedJobs.length - 1];
-            // var last = localStorage.getItem(jobs.length -1);
-            console.log(last);
-
+      
+            var tempJobs = JSON.parse(localStorage.getItem("jobs"));
+            var last = tempJobs[tempJobs.length - 1];
+ 
             sListEl.textContent = last;
             savedListEl.appendChild(sListEl);
         }
