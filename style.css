@@ -57,6 +57,7 @@ p {
   padding: 2% 8%;
   background-color: var(--dark);
   color: var(--primary);
+  font-style: oblique
 }
 
 .hero p {
