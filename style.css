@@ -169,6 +169,20 @@ p {
 .list-item:hover {
   background-color: var(--dark);
 }
+ 
+
+
+
+footer {
+  text-align: center;
+  position: bottom;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;  
+}
+ 
+
+
 
 footer {
   text-align: center;
