@@ -31,22 +31,58 @@ var formSubmitHandler = function (event) {
 };
 
 
-var getJobs = function (val1, val2, val3, val4) {
+var getJobs = function(val1, val2, val3, val4) {
   var apiUrl = 'https://api.careeronestop.org/v1/jobsearch/cgdmCgyPmLm9gZv/' + val1 + '/' + val2 + '/' + val3 + '/0/0/0/25/' + val4 + '?source=NLx&showFilters=false';
-  console.log(apiUrl);
-
+  //Fetching Bearer token
   fetch(apiUrl, {
-    headers: { Authorization: "Bearer fp63rEjnLUMlR+EolzxiYFhWBRxeLUH6GeNtjPUeRBxtpmZl0E76E9iGBGGVeVOpYbTh/U2kf1ao8pD4+0XStA==" }
+      headers: {Authorization: "Bearer fp63rEjnLUMlR+EolzxiYFhWBRxeLUH6GeNtjPUeRBxtpmZl0E76E9iGBGGVeVOpYbTh/U2kf1ao8pD4+0XStA=="}})
+
+  .then(function (response) {
+      if (response.ok) {
+ // Getting 
+      response.json().then(function (data) {
+              displayJobs(data.Jobs, keywordEl.value.trim());
+      });
+    } else {
+      alert('Error: ' + response.statusText);
+    }
   })
 
+  .catch(function (error) {
+    alert('Unable to connect to CareerOneStop');
+  });
+
+}
+
+var savedListEl = document.querySelector('#savedList')
+
+// Captures Form Inputs
+var formSubmitHandler = function(event) {
+    event.preventDefault();
+  // varibles to define form values
+    var keyword = keywordEl.value.trim();
+    var location = locationEl.value.trim();
+    var radius = radiusEl.value.trim();
+    var days = daysEl.value.trim();
+
+  // function to get and display jobs by passing above variables
+
+    getJobs(keyword,location,radius,days);
+    fetchWeather();
+};
+
+
+var getJobs = function(val1, val2, val3, val4) {
+    var apiUrl = 'https://api.careeronestop.org/v1/jobsearch/cgdmCgyPmLm9gZv/' + val1 + '/' + val2 + '/' + val3 + '/0/0/0/25/' + val4 + '?source=NLx&showFilters=false';
+    //Fetching Bearer token
+    fetch(apiUrl, {
+        headers: {Authorization: "Bearer fp63rEjnLUMlR+EolzxiYFhWBRxeLUH6GeNtjPUeRBxtpmZl0E76E9iGBGGVeVOpYbTh/U2kf1ao8pD4+0XStA=="}})
+
     .then(function (response) {
-      if (response.ok) {
-        console.log(response);
+        if (response.ok) {
+   // Getting 
         response.json().then(function (data) {
-          console.log(data);
-          console.log(data.Jobs);
-          console.log(keywordEl.value.trim());
-          displayJobs(data.Jobs, keywordEl.value.trim());
+                displayJobs(data.Jobs, keywordEl.value.trim());
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -59,48 +95,57 @@ var getJobs = function (val1, val2, val3, val4) {
 
 }
 
-var displayJobs = function (jobcount, jobsearchKeyword) {
+// Display jobs  is to show the results 
+var displayJobs = function(jobcount, jobsearchKeyword) {
   if (jobcount.length === 0) {
-    jobsContainerEl.textContent = 'No jobs found.';
-    return;
-  }
+      jobsContainerEl.textContent = 'No jobs found.';
+      return;
+    }    
 
-  // jobSearchTerm.textContent = jobsearchKeyword;
+    for (var i = 0; i < jobcount.length; i++) {
+      var jobName ="Company Name: " + jobcount[i].Company + '; Job Title: ' + jobcount[i].JobTitle + '; Location: ' + jobcount[i].Location  +  '; Posted on: ' + jobcount[i].AccquisitionDate;
+  
+      
+      var jobEl = document.createElement('p');
+      jobEl.classList = 'list-item flex-row justify-space-between align-center';
+      jobEl.textContent = jobName
+      //Adding jobs url link Click here for more details -->
+      var urlEl = document.createElement('a');
+      urlEl.textContent = "Click here for more details -->"
+      urlEl.setAttribute('href', jobcount[i].URL,);
+      urlEl.setAttribute('target', '_blank');
+ 
+  
+      jobEl.appendChild(urlEl); 
+      // Making a list of intrested job for followup
+      var saveEl = document.createElement('BUTTON');
+      saveEl.classList = 'flex-row align-center';
+      saveEl.innerText = "Save Job";        
 
-  for (var i = 0; i < jobcount.length; i++) {
-    var jobName = jobcount[i].Company + '/' + jobcount[i].JobTitle + '/' + jobcount[i].Location + '/' + jobcount[i].AccquisitionDate;
+      jobEl.appendChild(saveEl);
+      jobsContainerEl.appendChild(jobEl);
+      
+     // using the local stoage for saved job
+      saveEl.addEventListener("click", function(event) {          
 
-    // click event around here for weather api call
+         savedJobs.push(event.target.parentNode.innerText);        
+         localStorage.setItem('jobs', JSON.stringify(savedJobs)); 
 
-    var jobEl = document.createElement('a');
-    jobEl.classList = 'list-item flex-row justify-space-between align-center';
-    jobEl.setAttribute('href', jobcount[i].URL);
+          var sListEl = document.createElement("li");
+          sListEl.setAttribute("id","likedjob");
+    
+          var tempJobs = JSON.parse(localStorage.getItem("jobs"));
+          var last = tempJobs[tempJobs.length - 1];
 
-    var titleEl = document.createElement('span');
-    titleEl.textContent = jobName;
+          sListEl.textContent = last;
+          savedListEl.appendChild(sListEl);
+      }
+      ); 
+    }  
 
-    jobEl.appendChild(titleEl);
-
-
-    var saveEl = document.createElement('BUTTON');
-    saveEl.classList = 'flex-row align-center';
-    saveEl.innerText = "Save";
-    saveEl.setAttribute('button', "onclick=()");
-
-    // localStorage.setItem("savedJobs")
-    // savedJobs.push(jobName) }");
-
-    jobEl.appendChild(saveEl);
-
-    jobsContainerEl.appendChild(jobEl);
-
-  }
-};
-
-
+  };
 
 userFormEl.addEventListener('submit', formSubmitHandler);
-
 
 // weather api call
 // based off of zip
@@ -135,3 +180,4 @@ function fetchWeather(location) {
             //console.log(data.list[0].main.temp)
            // console.log(locationEl.value.trim());
             // renderItems(data.city, weatherZip.value.trim());
+
