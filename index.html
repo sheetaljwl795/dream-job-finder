@@ -4,9 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"> -->
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="style.css">
     <title>Dream Job Finder</title>    
 </head>
 
@@ -17,29 +22,27 @@
     </p>
   </header>
 
+  <div id="ww_f2ea0b0c0ebcd" v='1.20' loc='auto' a='{"t":"responsive","lang":"en","ids":[],"cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"5","sl_sot":"fahrenheit","sl_ics":"one_a","font":"Arial"}'><a href="https://weatherwidget.org/" id="ww_f2ea0b0c0ebcd_u" target="_blank">Weather Forecast Widgets for Websites</a> by Weatherwidget.org</div>
+  <script async src="https://srv1.weatherwidget.org/js/?id=ww_f2ea0b0c0ebcd"></script>
+
   <main class="flex-row justify-space-between">
     <div class="col-12 col-md-3">
 
       <div class="card">
-        <h3 class="card-header text-uppercase">Search Job</h3>
+        <h3 class="card-header text-uppercase">Search Jobs</h3>
         <form id="user-form" class="card-body">
 
-          <label class="form-label" for="keyword">Job Keyword</label>
+          <label class="form-label" for="keyword">Job Title</label>
           <input name="keyword" id="keyword" value placeholder="(required ex: developer)" type="text" autofocus="true" class="form-input"/>
 
-          <label class="form-label" for="location">Location</label>
-          <input name="location" id="location" value placeholder="(required ex: zipcode or city, state(reston, va))" type="text" autofocus="true" class="form-input"/>
+          <label class="form-label" for="location">Location City or Zip Code</label>
+          <input name="location" id="location" value placeholder="(required ex: 20191)" type="text" autofocus="true" class="form-input"/>
 
-          <label class="form-label" for="radius">Search Radius (miles)</label>
-          <input name="radius" id="radius" value placeholder="(required: ex: 25)" type="text" autofocus="true" class="form-input"/>
+          <label class="form-label" for="radius">Mile Radius</label>
+          <input name="radius" id="radius" value placeholder="25" type="text" autofocus="true" class="form-input"/>
 
-          <label class="form-label" for="days">Days Posted</label>
+          <label class="form-label" for="days">Days Since Posting</label>
           <input name="days" id="days"  value placeholder="(required ex: 30)" type="text" autofocus="true" class="form-input"/>
-
-          <!-- 
-          <label class="form-label" for="pageSize">Page Size</label>
-          <input name="pageSize" id="pageSize" type="text" autofocus="true" class="form-input"/> 
-          -->
 
           <button type="submit" class="btn">Get Jobs</button>
 
@@ -49,7 +52,7 @@
     </div>
 
     <div class="col-12 col-md-6">
-      <h2 class="subtitle">Showing Jobs For: <span id="job-search-term"></span></h2>
+      <h2 class="subtitle">Jobs based on your search:<span id="job-search-term"></span></h2>
       <div id="jobs-container" class="list-group"></div>
     
     </div>
@@ -65,18 +68,15 @@
 
       <div class="card">
         <h3 class="card-header text-uppercase">Weather:</h3>
-        <div id="language-buttons" class="card-body">
-          <p>Sunny</p>
-          <p>Raining</p>
-          <p>Snowing</p>
+        <div id="localWeather" class="card-body">
 
         </div>
       </div>
-     
     </div>
     
   </main>
 
+  <footer>&Copy 2022 Team Project E, UW Coding Boot Camp August, 2022</footer>
     <script src="script.js"></script>
 </body>
 </html>

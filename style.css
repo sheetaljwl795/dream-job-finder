@@ -1,10 +1,10 @@
 :root {
-  --primary: #cbcbc8;
+  --primary: #ffffff;
   --secondary: #9caea9;
   --tertiary: #788585;
-  --light-dark: #6f6866;
-  --dark: #38302e;
-  --border-radius: .3rem;
+  --light-dark: #4da1f0;
+  --dark: #010825;
+  --border-radius: .5rem;
 }
 
 * {
@@ -27,10 +27,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 30px;
   margin: 0;
   color: var(--dark);
-  line-height: 1.25;
+  line-height: 1.00;
 }
 
 main {
@@ -53,20 +54,23 @@ p {
 }
 
 .hero {
-  padding: 3% 4%;
+  padding: 2% 8%;
   background-color: var(--dark);
   color: var(--primary);
 }
 
 .hero p {
-  max-width: 75%;
+  max-width: 90%;
 }
 
 .app-title {
   font-size: 3rem;
   background-color: var(--primary);
   color: var(--dark);
-  padding: 0 10px;
+  padding-top: 10px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 10px;
   display: inline-block;
   border-radius: var(--border-radius);
   box-shadow: 6px 5px var(--light-dark);
@@ -89,18 +93,18 @@ p {
 .card {
   margin: 0 0 20px 0;
   border: 3px solid var(--dark);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius)
 }
 
 .card-header {
   color: var(--primary);
   background-color: var(--dark);
-  padding: 2.5%;
+  padding: 3.5%;
   border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
 }
 
 .card-body {
-  padding: 2.5%;
+  padding: 8.5%;
 }
 
 /* FONT UTILS */
@@ -117,14 +121,14 @@ p {
 
 .form-label {
   font-size: 1.1rem;
-  margin: 0 0 0 5px;
+  margin: 1 1 1 5px;
 }
 
 .form-input {
   width: 100%;
   padding: 3%;
   margin: 5px 0;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   border: 2px solid var(--light-dark);
   border-radius: var(--border-radius);
 }
@@ -133,10 +137,10 @@ p {
 .btn {
   font-size: 1.3rem;
   text-decoration:none;
-  padding: 6px 5px;
-  width: 100%;
+  padding: 1px 1px;
+  width: 80%;
   display: block;
-  margin: 5px 0;
+  margin: 3px 35px;
   border-radius: var(--border-radius);
   color: var(--primary);
   border: none;
@@ -164,6 +168,17 @@ p {
 
 .list-item:hover {
   background-color: var(--dark);
+}
+ 
+
+
+
+footer {
+  text-align: center;
+  position: bottom;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;  
 }
  
 
@@ -568,7 +583,6 @@ p {
     flex: 0 0 100%;
   }
 }
-
 
 
 
