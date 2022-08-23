@@ -72,28 +72,7 @@ var formSubmitHandler = function(event) {
 };
 
 
-var getJobs = function(val1, val2, val3, val4) {
-    var apiUrl = 'https://api.careeronestop.org/v1/jobsearch/cgdmCgyPmLm9gZv/' + val1 + '/' + val2 + '/' + val3 + '/0/0/0/25/' + val4 + '?source=NLx&showFilters=false';
-    //Fetching Bearer token
-    fetch(apiUrl, {
-        headers: {Authorization: "Bearer fp63rEjnLUMlR+EolzxiYFhWBRxeLUH6GeNtjPUeRBxtpmZl0E76E9iGBGGVeVOpYbTh/U2kf1ao8pD4+0XStA=="}})
 
-    .then(function (response) {
-        if (response.ok) {
-   // Getting 
-        response.json().then(function (data) {
-                displayJobs(data.Jobs, keywordEl.value.trim());
-        });
-      } else {
-        alert('Error: ' + response.statusText);
-      }
-    })
-
-    .catch(function (error) {
-      alert('Unable to connect to CareerOneStop');
-    });
-
-}
 
 // Display jobs  is to show the results 
 var displayJobs = function(jobcount, jobsearchKeyword) {
@@ -174,9 +153,4 @@ function fetchWeather(location) {
 }
 
 
-// function displayLocalWeather () {
-//     weatherDiv.innerHTML()
-// }
-            //console.log(data.list[0].main.temp)
-           // console.log(locationEl.value.trim());
-            // renderItems(data.city, weatherZip.value.trim());
+
